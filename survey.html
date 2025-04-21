@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Анкетирование</title>
+	<link rel="stylesheet" href="css/styles-main.css">
+	<style>
+		body {
+			margin: 0;
+			font-family: Arial, sans-serif;
+			background: url("images/doc-page.jpg") no-repeat center center fixed;
+			background-size: cover;
+			color: #fff;
+		}
+
+		#thank-you-overlay {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.8);
+			z-index: 1000;
+			justify-content: center;
+			align-items: center;
+			color: white;
+			font-size: 2rem;
+		}
+
+		label,
+		input,
+		select {
+			display: block;
+			width: 100%;
+			margin-bottom: 15px;
+			font-size: 1rem;
+		}
+
+		button {
+			background-color: red;
+			color: white;
+			padding: 10px;
+			border: none;
+			cursor: pointer;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<header class="main-header">
+		<div class="logo">
+			<a href="index.html" style="text-decoration: none; color: white; font-size: 1.5rem; font-weight: bold;">
+				Научная Бариатрия
+			</a>
+		</div>
+		<nav class="main-nav">
+			<ul>
+				<li><a href="index.html">Главная</a></li>
+				<li><a href="index.html#news-section">Новости и события</a></li>
+				<li><a href="index.html#media-section">Мы в соцсетях</a></li>
+				<li><a href="survey.html" class="active">Анкетирование</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="hero-text">
+		<h1>Как пройти обследование?</h1>
+		<p>Юридическое обоснование (типа это не медицинская диагностика, а предварительная беседа или предварительное
+			анкетирование, поскольку это онлайн).</p>
+		<label for="consent" style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+			Я прочитал и согласен с этим
+			<input type="checkbox" id="consent" required>
+		</label>
+		<button id="start-btn" disabled>Попробовать</button>
+	</main>
+
+	<section id="form-section" style="display:none">
+		<h2 style="text-align:center; padding-top: 20px">Форма для записи</h2>
+		<form id="survey-form">
+			<label>Ваше имя <input type="text" required></label>
+			<label>Электронная почта <input type="email" required></label>
+			<label>Ваш пол
+				<select required>
+					<option value="">-- выберите --</option>
+					<option>М</option>
+					<option>Ж</option>
+				</select>
+			</label>
+			<label>Возраст <input type="number" required></label>
+			<label>Вес <input type="number" required></label>
+			<label>Рост <input type="number" required></label>
+			<label>У вас уже была бариатрическая операция?
+				<select required>
+					<option value="">-- выберите --</option>
+					<option>Да</option>
+					<option>Нет</option>
+				</select>
+			</label>
+			<label>Удобный формат консультации
+				<select required>
+					<option value="">-- выберите --</option>
+					<option>Очно</option>
+					<option>Телефон</option>
+					<option>Видеосвязь</option>
+				</select>
+			</label>
+			<label>Как с вами связаться
+				<select required>
+					<option value="">-- выберите --</option>
+					<option>Телефон</option>
+					<option>WhatsApp</option>
+					<option>Telegram</option>
+					<option>Email</option>
+				</select>
+			</label>
+			<label>Номер для связи <input type="text" required></label>
+			<label style="display: flex; align-items: center; justify-content: space-between; font-size: 1rem;">
+				Я согласен с уловиями пользовательского соглашения
+				<input type="checkbox" required
+					style="transform: translateY(1.5px); width: 18px; height: 18px; margin-left: 10px;">
+			</label>
+			<button type="submit">Отправить данные администратору</button>
+		</form>
+	</section>
+
+	<div id="thank-you-overlay">
+		<p>Спасибо за прохождение!</p>
+	</div>
+
+	<script>
+		document.getElementById("consent").addEventListener("change", function () {
+			document.getElementById("start-btn").disabled = !this.checked;
+		});
+
+		document.getElementById("start-btn").addEventListener("click", function () {
+			document.querySelector("main").style.display = "none";
+			document.getElementById("form-section").style.display = "block";
+		});
+
+		document.getElementById("survey-form").addEventListener("submit", function (e) {
+			e.preventDefault();
+			document.getElementById("thank-you-overlay").style.display = "flex";
+			setTimeout(() => {
+				window.location.href = "index.html";
+			}, 3000);
+		});
+	</script>
+
+</body>
+
+</html>

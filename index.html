@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Научная Бариатрия</title>
+	<link rel="stylesheet" href="css/styles-main.css">
+</head>
+
+<body>
+	<header class="main-header">
+		<div class="logo">
+			<h1 class="site-title">Научная Бариатрия</h1>
+		</div>
+		<nav class="main-nav">
+			<ul>
+				<li><a href="#">Главная</a></li>
+				<li><a href="#news">Новости и события</a></li>
+				<li><a href="#media">Мы в соцсетях</a></li>
+				<li><a href="survey.html">Анкетирование</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<section class="hero">
+		<img src="images/doc-page.jpg" alt="Hero-main">
+		<div class="hero-text">
+			<h1>Планируете бариатрическую операцию и не можете сделать выбор?</h1>
+			<p> Это очень сложный вопрос, и большая часть хирургов просто предлагают пациентам ту операцию, которую они
+				умеют делать, вне зависимости от индивидуальных особенностей и медицинского статуса пациента.
+				Многолетний опыт нашей команды и научные исследования в области диагностики и лечения ожирения и
+				метаболических нарушений, позволяет нам делать научно обоснованный выбор бариатрической операции.
+				Выбор происходит путем сбора максимально возможной информации о пациенте, включая множество дополнительных
+				параметров, которые намного шире и глубже стандартного предоперационного обследования.
+			</p>
+			<a href="survey.html" class="btn">Подробнее</a>
+		</div>
+	</section>
+
+	<section id="news" class="featured-news">
+		<h2>Новости</h2>
+		<div class="news-grid-style2">
+			<a href="#" class="news-card">
+				<div class="news-overlay">
+					<h3>Операции сегодня</h3>
+					<span class="news-icon">➔</span>
+				</div>
+				<img src="images/news1.jpg" alt="">
+			</a>
+			<a href="#" class="news-card">
+				<div class="news-overlay">
+					<h3></h3>
+					<span class="news-icon">➔</span>
+				</div>
+				<img src="images/news2.jpg" alt="">
+			</a>
+			<a href="#" class="news-card">
+				<div class="news-overlay">
+					<h3></h3>
+					<span class="news-icon">➔</span>
+				</div>
+				<img src="images/news3.jpg" alt="">
+			</a>
+			<a href="#" class="news-card">
+				<div class="news-overlay">
+					<h3></h3>
+					<span class="news-icon">➔</span>
+				</div>
+				<img src="images/news4.jpg" alt="">
+			</a>
+		</div>
+	</section>
+
+	</section>
+
+	<section id="media" class="media-gallery">
+		<h2>Ещё больше нового...</h2>
+		<div class="gallery">
+			<div class="video-wrapper">
+				<iframe src=https://www.youtube.com/embed/ID_видео></iframe>
+				</iframe>
+			</div>
+			<div class="video-wrapper">
+				<iframe src="https://www.youtube.com/embed/ID_видео" title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen>
+				</iframe>
+			</div>
+			<div class="video-wrapper">
+				<iframe src="https://www.youtube.com/embed/ID_видео" title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen>
+				</iframe>
+			</div>
+
+		</div>
+	</section>
+
+
+	<footer class="custom-footer">
+		<div class="footer-top">
+			<div class="footer-contacts">
+				<div>
+					<p><strong>Наша почта:</strong> Bariatria_psychologia@mail.ru<br>
+					</p>
+				</div>
+				<div>
+					<p><strong>Мобильный:</strong> +7 991 988 45 24<br>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-middle">
+			<div class="footer-location">
+				<h3>Наш адрес</h3>
+				<p>Ул.Ольховская 27<br>Москва. Россия</p>
+				<a href="https://yandex.ru/maps/213/moscow/house/olkhovskaya_ulitsa_27/Z04YcAFpSkUBQFtvfXt2dHljZA==/?ll=37.670024%2C55.775494&z=18.74"
+					target="_blank" rel="noopener noreferrer" title="Открыть адрес в Яндекс.Картах">
+
+					<iframe src="https://yandex.ru/map-widget/v1/?ll=37.656931%2C55.773193&z=17&pt=37.656931,55.773193~ul"
+						width="100%" height="250" frameborder="0" allowfullscreen>
+					</iframe>
+				</a>
+			</div>
+		</div>
+
+		<div class="footer-bottom">
+			<p>&copy; Научная Бариатрия 2025 | All Rights Reserved</p>
+			<div class="social-icons">
+				<a href="https://vk.com/fedenkosurgeon"><img src="images/VK.png" alt="VK"></a>
+				<a href="https://t.me/bariatriamoscoww"><img src="images/Telegram.png" alt="Telegram"></a>
+				<a href="https://youtu.be/1wAv0ijmIA8?si=wsMJdGG4tNr8CrpR"><img src="images/Youtube.png" alt="Youtube"></a>
+			</div>
+		</div>
+	</footer>
+
+</body>
+
+<script>
+	async function loadArticles() {
+		try {
+			const response = await fetch('newspaper/articles.json');
+			const articles = await response.json();
+			const container = document.getElementById('articles-container');
+
+			articles.forEach(article => {
+				const card = document.createElement('a');
+				card.href = 'newspaper/' + article.link;
+				card.className = 'article-card';
+				card.innerHTML = `
+			  <img src="${article.image}" alt="${article.title}">
+			  <div class="card-content">
+				 <h3>${article.title}</h3>
+				 <p>${article.description}</p>
+			  </div>
+			`;
+				container.appendChild(card);
+			});
+		} catch (error) {
+			console.error('Ошибка загрузки статей:', error);
+		}
+	}
+
+	document.addEventListener('DOMContentLoaded', loadArticles);
+</script>
+
+</html>

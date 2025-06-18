@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Профиль</title>
+	<link rel="stylesheet" href="css/styles-main.css" />
+	<style>
+		body {
+			margin: 0;
+			font-family: Arial, sans-serif;
+			background: url("images/doc-page.jpg") no-repeat center center fixed;
+			background-size: cover;
+			color: white;
+		}
+
+		main {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			gap: 20px;
+			background: rgba(0, 0, 0, 0.6);
+		}
+
+		h1 {
+			margin-bottom: 20px;
+		}
+
+		.btn {
+			background-color: red;
+			color: white;
+			padding: 12px 24px;
+			border: none;
+			border-radius: 8px;
+			font-size: 1rem;
+			cursor: pointer;
+			text-decoration: none;
+		}
+
+		.btn:hover {
+			background-color: darkred;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="main-header">
+		<div class="logo">
+			<a href="index.html" style="text-decoration: none; color: white; font-size: 1.5rem; font-weight: bold;">
+				Научная Бариатрия
+			</a>
+		</div>
+		<nav class="main-nav">
+			<ul>
+				<li><a href="index.html">Главная</a></li>
+				<li><a href="index.html#news-section">Новости</a></li>
+				<li><a href="index.html#media-section">Соцсети</a></li>
+				<li><a href="survey.html">Анкетирование</a></li>
+				<li><a href="me.html" class="active">Профиль</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<h1>Добро пожаловать</h1>
+		<a class="btn" href="login.html">Войти</a>
+		<a class="btn" href="register.html">Зарегистрироваться</a>
+	</main>
+</body>
+
+</html>
+
+<script>
+	document.addEventListener("DOMContentLoaded", async () => {
+		const userId = localStorage.getItem("userId"); // или токен
+		if (!userId) {
+			window.location.href = "login.html"; // неавторизован
+			return;
+		}
+
+		try {
+			const res = await fetch(`/api/profile?id=${userId}`);
+			if (!res.ok) throw new Error("Ошибка загрузки профиля");
+
+			const data = await res.json();
+
+			// Вставка в DOM
+			document.getElementById("user-name").textContent = data.name;
+			document.getElementById("user-email").textContent = data.email;
+		} catch (err) {
+			console.error(err);
+			alert("Ошибка загрузки профиля");
+		}
+	});
+</script>

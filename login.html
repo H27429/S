@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Авторизация</title>
+	<link rel="stylesheet" href="css/styles-main.css">
+</head>
+
+<body>
+	<header class="main-header">
+		<div class="logo">
+			<a href="index.html" style="text-decoration: none; color: white; font-size: 1.5rem; font-weight: bold;">
+				Научная Бариатрия
+			</a>
+		</div>
+		<nav class="main-nav">
+			<ul>
+				<li><a href="index.html">Главная</a></li>
+				<li><a href="">Новости и события</a></li>
+				<li><a href="">Мы в соцсетях</a></li>
+				<li><a href="survey.html">Анкетирование</a></li>
+				<li><a href="me.html">Профиль</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<form style="margin-top: 60px;">
+			<h2>Вход в профиль</h2>
+			<label>Электронная почта
+				<input type="email" required>
+			</label>
+			<label>Пароль
+				<input type="password" required>
+			</label>
+			<button type="submit">Войти</button>
+		</form>
+	</main>
+
+	<script>
+		document.querySelector("form").addEventListener("submit", function (e) {
+			e.preventDefault();
+			// Имитируем успешную авторизацию
+			const email = this.querySelector('input[type="email"]').value;
+			const name = email.split("@")[0]; // примерное имя
+
+			// Сохраняем в localStorage
+			localStorage.setItem("user", JSON.stringify({ name, email }));
+
+			window.location.href = "profile.html";
+		});
+	</script>
+</body>
+
+</html>

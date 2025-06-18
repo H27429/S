@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Профиль</title>
+	<link rel="stylesheet" href="css/styles-main.css">
+</head>
+
+<body>
+	<header class="main-header">
+		<div class="logo">
+			<a href="index.html" style="text-decoration: none; color: white; font-size: 1.5rem; font-weight: bold;">
+				Научная Бариатрия
+			</a>
+		</div>
+		<nav class="main-nav">
+			<ul>
+				<li><a href="index.html">Главная</a></li>
+				<li><a href="">Новости и события</a></li>
+				<li><a href="">Мы в соцсетях</a></li>
+				<li><a href="survey.html">Анкетирование</a></li>
+				<li><a href="me.html">Профиль</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main style="margin-top: 60px; text-align: center;">
+		<form style="max-width: 500px;">
+			<h2>Профиль пользователя</h2>
+			<p><strong>Имя:</strong> <span id="user-name"></span></p>
+			<p><strong>Email:</strong> <span id="user-email"></span></p>
+			<button onclick="logout()">Выйти</button>
+		</form>
+	</main>
+
+	<script>
+		const user = JSON.parse(localStorage.getItem("user"));
+		if (!user) {
+			window.location.href = "login.html";
+		} else {
+			document.getElementById("user-name").textContent = user.name;
+			document.getElementById("user-email").textContent = user.email;
+		}
+
+		function logout() {
+			localStorage.removeItem("user");
+			window.location.href = "login.html";
+		}
+	</script>
+</body>
+
+</html>
